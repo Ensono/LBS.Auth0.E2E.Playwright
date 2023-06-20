@@ -6,7 +6,7 @@ The solution uses Playwright as part of its end-to-end testing suite.
 
 # Design and Architecture
 The test harness consists of a simple Auth0 Single Page Application (SPA) and a test runner (Playwright) which we can use to grant us access to the LBS Auth0 client. It leverages an Azure Devops pipeline.yaml file to handle all of the credentials retrieval when ran as part of a pipeline, as well as handle any artefacts.
-![Diagram](./Architecture.png)
+![Architecture](https://github.com/amido/LBS.Auth0.E2E.Playwright/assets/29248132/90da67c4-ca8c-4a97-aeab-5d1163afa53a)
 
 
 #Running locally

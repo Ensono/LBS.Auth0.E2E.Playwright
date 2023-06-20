@@ -9,7 +9,7 @@ The test harness consists of a simple Auth0 Single Page Application (SPA) and a 
 ![Architecture](https://github.com/amido/LBS.Auth0.E2E.Playwright/assets/29248132/90da67c4-ca8c-4a97-aeab-5d1163afa53a)
 
 
-#Running locally
+# Running locally
 You will need [Node.js](https://nodejs.org/en/) installed to run the test harness locally. And Docker if you wish to run the SPA within a container; running in a container is completely optional however, and the SPA can also be ran in non-containerised mode.
 
 ## Setting up your local environment
@@ -52,7 +52,7 @@ The SPA uses an `auth_config.json` file for connection context. To generate the 
 The SPA can be ran in either containerised or non-containerised mode. In either case you can check that the SPA is running by opening a browser and navigating to http://localhost:3000
 ### Containerised
 Run `sh ./exec.sh` to build and run the containerised SPA locally (alternatively you can also run `pwsh exec.ps1` if you're running in Windows).
-###Non-containerised
+### Non-containerised
 Run `node ./binaries/www` to run the SPA in non-containerised mode.
 
 ## Running tests

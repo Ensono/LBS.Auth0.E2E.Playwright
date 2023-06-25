@@ -2,10 +2,11 @@
 Simple Login via Auth0 Lock UI using Playwright
 
 # Overview
-The solution uses Playwright as part of its end-to-end testing suite.
+The solution uses Playwright as part of its end-to-end testing suite. 
 
 # Design and Architecture
 The test harness consists of a simple Auth0 Single Page Application (SPA) and a test runner (Playwright) which we can use to grant us access to the LBS Auth0 client. It leverages an Azure Devops pipeline.yaml file to handle all of the credentials retrieval when ran as part of a pipeline, as well as handle any artefacts.
+
 ![Architecture](https://github.com/amido/LBS.Auth0.E2E.Playwright/assets/29248132/90da67c4-ca8c-4a97-aeab-5d1163afa53a)
 
 
@@ -13,12 +14,13 @@ The test harness consists of a simple Auth0 Single Page Application (SPA) and a 
 You will need [Node.js](https://nodejs.org/en/) installed to run the test harness locally. And Docker if you wish to run the SPA within a container; running in a container is completely optional however, and the SPA can also be ran in non-containerised mode.
 
 ## Setting up your local environment
-- Clone the Identity Repository
+- Clone the Repository
 
 All local setup should be done from within the root directory of the End-to-end test solution within the LBS Identity project. This is located within `./LBS-Identity/LBS.Identity.E2eTests`
 ## Installing dependencies
 - Open a terminal and navigate to `LBS.Identity.E2eTests` (as mentioned above)
 - Run `npm install` to install the node project dependencies
+- Run `npm install jwt-decode` to install jwt-decode library that helps decoding JWTs token
 - Run `npx install playwright` to install the test runner and browser dependencies
 
 ## Creating a `.env` file

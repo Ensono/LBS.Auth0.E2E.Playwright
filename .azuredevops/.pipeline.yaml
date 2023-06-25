@@ -1,0 +1,46 @@
+name: End-to-end Tests
+
+#This pipeline is also triggered from these pipelines which are in a different repo:
+#identity-auth0
+#identity-lbsnosvc-infra
+
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - LBS.Identity.E2eTests/*
+      - LBS.Identity.LBSNumberService/*
+
+parameters:
+  - name: environment
+    type: string
+    default: dev
+    values:
+    - dev
+    - sit
+    - qau
+  #We require https://localhost:3000 to callback url for these tests to work so at the moment we only run e2e tests up to QA
+
+variables:
+  - name: vmImage
+    value: 'ubuntu-latest'
+
+pool:
+  vmImage: $(vmImage)
+
+stages:
+  - stage: Tests
+    displayName: 'Run End to End Tests {{ parameters.environment }}'
+    variables:
+    - group: kvldneduident${{ parameters.environment }}
+    - template: vars/${{ parameters.environment }}-uks.yml
+    jobs:
+      - template: tests.yaml
+        parameters:
+          auth0domain: '$(auth0_domain)'
+          auth0user: '$(Auth0--E2ETests--Email)'
+          auth0password: '$(Auth0--E2ETests--Password)'
+          auth0client: '$(Auth0--PortalApp--ClientID)'
+          environment: ${{ parameters.environment }}

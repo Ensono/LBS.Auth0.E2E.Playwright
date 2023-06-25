@@ -1,0 +1,3 @@
+variables:
+  - name: auth0_domain
+    value: 'londonedu-qau.eu.auth0.com'

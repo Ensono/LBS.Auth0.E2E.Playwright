@@ -1,0 +1,54 @@
+parameters:
+  - name: auth0domain
+    type: string
+
+  - name: auth0user
+    type: string
+    
+  - name: auth0password
+    type: string
+  
+  - name: auth0client
+    type: string
+
+  - name: environment
+    type: string
+
+jobs:    
+  - job: Test
+    displayName: Run End to End Tests
+    steps:
+    - checkout: self 
+    - script: |
+        # Export app env vars
+        export AUTH0USER=${{ parameters.auth0user }}
+        export AUTH0PASSWORD="${{ parameters.auth0password }}"
+        export DOMAIN=${{ parameters.auth0domain }}
+        export CLIENTID=${{ parameters.auth0client }}
+
+        # Install dependencies
+        cd ./LBS.Identity.E2eTests/
+        npm install
+
+        # Launch Auth0 SPA
+        sh ./exec.sh
+        
+        # Generate auth_config.json and copy to container
+        node ./environment-config.js
+        docker cp ./auth_config.json auth0-app:/app/auth_config.json
+        
+        # Install Playwright
+        npx playwright install --with-deps chromium
+
+        # Launch tests
+        npx playwright test
+
+      displayName: "Run end-to-end tests"
+    
+    - publish: ./LBS.Identity.E2eTests/test-results/
+      condition: failed()
+      artifact: "TestResults_${{ parameters.environment }}"
+
+    - publish: ./LBS.Identity.E2eTests/playwright-report/
+      artifact: "index_${{ parameters.environment }}.html"
+      condition: always()

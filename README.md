@@ -16,9 +16,9 @@ You will need [Node.js](https://nodejs.org/en/) installed to run the test harnes
 ## Setting up your local environment
 - Clone the Repository
 
-All local setup should be done from within the root directory of the End-to-end test solution within the LBS Identity project. This is located within `./LBS-Identity/LBS.Identity.E2eTests`
+All local setup should be done from within the root directory of the End-to-end test solution within the LBS Identity project. This is located within `./LBS.Auth0.E2E.Playwright`
 ## Installing dependencies
-- Open a terminal and navigate to `LBS.Identity.E2eTests` (as mentioned above)
+- Open a terminal and navigate to `LBS.Auth0.E2E.Playwright` (as mentioned above)
 - Run `npm install` to install the node project dependencies
 - Run `npm install jwt-decode` to install jwt-decode library that helps decoding JWTs token
 - Run `npx install playwright` to install the test runner and browser dependencies

@@ -9,8 +9,7 @@ The test harness consists of a simple Auth0 Single Page Application (SPA) and a 
 
 It includes code which leverages an Azure Devops pipeline.yaml file to handle all of the credentials retrieval when ran as part of a pipeline, as well as handle any artefacts.
 
-![Architecture](https://github.com/amido/LBS.Auth0.E2E.Playwright/assets/29248132/90da67c4-ca8c-4a97-aeab-5d1163afa53a)
-
+![architecture](https://github.com/amido/LBS.Auth0.E2E.Playwright/assets/29248132/c0b92657-a89b-4f46-845f-e34b3e91c405)
 
 # Running locally
 You will need [Node.js](https://nodejs.org/en/) installed to run the test harness locally. And Docker if you wish to run the SPA within a container; running in a container is completely optional however, and the SPA can also be ran in non-containerised mode.
